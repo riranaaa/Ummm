@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>یه سوال مهم ❤️</title>
+
+<style>
+body{
+    font-family: Tahoma, sans-serif;
+    text-align:center;
+    background:#ffeef5;
+    margin:0;
+    padding:40px;
+}
+
+.page{
+    display:none;
+}
+
+.active{
+    display:block;
+}
+
+h1{
+    color:#ff4081;
+}
+
+button{
+    padding:12px 24px;
+    margin:10px;
+    font-size:20px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+}
+
+.yes{
+    background:#4CAF50;
+    color:white;
+}
+
+.no{
+    background:#f44336;
+    color:white;
+    position:relative;
+}
+
+.number-btn{
+    background:#ff85b3;
+    color:white;
+    width:60px;
+}
+
+.cat{
+    font-size:120px;
+    margin-top:20px;
+}
+</style>
+</head>
+<body>
+
+<div id="page1" class="page active">
+    <h1>منو دوست داری؟ ❤️</h1>
+
+    <button class="yes" onclick="showPage2()">
+        بله
+    </button>
+
+    <button class="no" id="noBtn">
+        نه
+    </button>
+</div>
+
+<div id="page2" class="page">
+    <h1>چندتا؟ 🥹</h1>
+
+    <div id="numbers"></div>
+
+    <p id="message"></p>
+</div>
+
+<div id="page3" class="page">
+    <h1>میدونستممممم 😍❤️</h1>
+
+    <div class="cat"> <img src="cat.jpg" class="cat"> </div>
+
+.cat{
+  width:300px;
+  max-width:90%;
+  border-radius:20px;
+}
+
+    <h2>گربه خوشحال شد!</h2>
+</div>
+
+<script>
+
+const noBtn = document.getElementById("noBtn");
+
+noBtn.addEventListener("mouseover", () => {
+    const x = Math.random() * (window.innerWidth - 150);
+    const y = Math.random() * (window.innerHeight - 100);
+
+    noBtn.style.position = "absolute";
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+});
+
+function showPage2(){
+    document.getElementById("page1").classList.remove("active");
+    document.getElementById("page2").classList.add("active");
+}
+
+const numbersDiv = document.getElementById("numbers");
+
+for(let i=1;i<=10;i++){
+
+    const btn = document.createElement("button");
+
+    btn.innerText = i;
+    btn.className = "number-btn";
+
+    btn.onclick = () => {
+
+        if(i === 10){
+
+            document.getElementById("page2").classList.remove("active");
+            document.getElementById("page3").classList.add("active");
+
+        }else{
+
+            document.getElementById("message").innerHTML =
+            "فکر کن دوباره 😏";
+        }
+    };
+
+    numbersDiv.appendChild(btn);
+}
+
+</script>
+
+<script>
+function createHeart() {
+
+  const heart = document.createElement("div");
+
+  heart.innerHTML = "💖";
+
+  heart.style.position = "fixed";
+  heart.style.left = Math.random() * window.innerWidth + "px";
+  heart.style.top = window.innerHeight + "px";
+  heart.style.fontSize = "30px";
+
+  document.body.appendChild(heart);
+
+  let pos = window.innerHeight;
+
+  const interval = setInterval(() => {
+
+      pos -= 3;
+
+      heart.style.top = pos + "px";
+
+      if(pos < -50){
+          clearInterval(interval);
+          heart.remove();
+      }
+
+  },20);
+}
+
+setInterval(createHeart,300);
+</script>
+
+</body>
+</html>
